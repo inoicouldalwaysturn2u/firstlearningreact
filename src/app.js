@@ -1,6 +1,19 @@
 /* global React */
 /* global ReactDOM */
 
+class IndecisionApp extends React.Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <Action />
+        <Options />
+        <AddOption />
+      </div>
+    );
+  }
+}
+
 class Header extends React.Component {
   render() {
     return (
@@ -25,8 +38,16 @@ class Action extends React.Component {
 class Options extends React.Component {
   render() {
     return (
+      <Option />
+    );
+  }
+}
+
+class Option extends React.Component {
+  render() {
+    return (
       <div>
-        Options component here
+        An option component here
       </div>
     );
   }
@@ -42,13 +63,4 @@ class AddOption extends React.Component {
   }
 }
 
-const jsx = (
-  <div>
-    <Header />
-    <Action />
-    <Options />
-    <AddOption />
-  </div>
-);
-
-ReactDOM.render( jsx, document.getElementById( 'app' ) );
+ReactDOM.render( <IndecisionApp />, document.getElementById( 'app' ) );
