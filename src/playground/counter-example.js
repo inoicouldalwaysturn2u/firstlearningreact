@@ -1,3 +1,4 @@
+/* global React */
 /* global ReactDOM */
 
 console.log('App.js is running');
