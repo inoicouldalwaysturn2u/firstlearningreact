@@ -1,0 +1,49 @@
+{
+    "onSave": false,
+    "unformatted": ["div", "a", "abbr", "area", "audio", "b", "bdi", "bdo", "br", "button", "canvas", "cite",
+        "code",
+        "data",
+        "datalist", "del", "dfn", "em", "embed", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label",
+        "map",
+        "mark", "math", "meter", "noscript", "object", "output", "progress", "q", "ruby", "s", "samp", "select",
+        "small",
+        "span", "strong", "sub", "sup", "template", "textarea", "time", "u", "var", "video", "wbr", "text",
+        "acronym",
+        "address", "big", "dt", "ins", "small", "strike", "tt", "pre", "h1", "h2", "h3", "h4", "h5", "h6"
+    ],
+    "javascript": {
+        "indent_size": 4,
+        "indent_char": " ",
+        "eol": "auto",
+        "preserve_newlines": true,
+        "break_chained_methods": false,
+        "max_preserve_newlines": 2,
+        "space_in_paren": true,
+        "space_in_empty_paren": false,
+        "jslint_happy": false,
+        "space_after_anon_function": false,
+        "keep_array_indentation": false,
+        "space_before_conditional": true,
+        "unescape_strings": false,
+        "wrap_line_length": 0,
+        "e4x": false,
+        "end_with_newline": true,
+        "comma_first": false,
+        "brace_style": "collapse-preserve-inline"
+    },
+    "css": {
+        "indent_size": 4,
+        "indentCharacter": " ",
+        "indent_char": " ",
+        "selector_separator_newline": true,
+        "end_with_newline": false,
+        "newline_between_rules": true,
+        "eol": "\n"
+    },
+    "html": {
+        "indent_inner_html": false,
+        "indent_size": 4,
+        "indent_char": " ",
+        "indent_character": " "
+    }
+}
