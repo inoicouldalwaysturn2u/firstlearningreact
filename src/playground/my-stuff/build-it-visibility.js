@@ -1,3 +1,4 @@
+/* global React */
 /* global ReactDOM */
 
 // how i did it

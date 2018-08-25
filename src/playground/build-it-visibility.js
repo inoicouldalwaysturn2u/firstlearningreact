@@ -1,3 +1,4 @@
+/* global React */
 /* global ReactDOM */
 
 // how Andrew did it
@@ -7,7 +8,7 @@ console.log( 'build-it-1.js is running' );
 let visibility = '';
 
 const onFormSubmit = () => {
-  visibility = !visibility
+  visibility = !visibility;
   renderDis();
 };
 
