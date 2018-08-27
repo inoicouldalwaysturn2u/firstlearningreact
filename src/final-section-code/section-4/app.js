@@ -120,7 +120,7 @@ class AddOption extends React.Component {
 
     this.state = {
       error: undefined
-    };
+    }
   }
 
   handleAddOption( e ) {
