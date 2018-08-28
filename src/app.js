@@ -18,11 +18,23 @@ class IndecisionApp extends React.Component {
   }
 
   componentDidMount() {
-    console.log( 'lol' );
+    try {
+      const json = localStorage.getItem('options');
+      const options = JSON.parse(json);
+
+      if ( options ) {
+        this.setState( () => ( { options } ) );
+      }
+    } catch ( e ) {
+      // do nothing
+    }
   }
 
   componentDidUpdate( prevProps, prevState ) {
-    console.log( 'yep' );
+    if ( prevState.options.length !== this.state.options.length ) {
+      const json = JSON.stringify( this.state.options );
+      localStorage.setItem( 'options', json );
+    }
   }
 
   componentWillUnmount() {
@@ -74,7 +86,9 @@ class IndecisionApp extends React.Component {
   }
 
   buttonState() {
-    return this.state.options.length > 0 ? false : true;
+    if ( this.state.options ) {
+      return this.state.options.length > 0 ? false : true;
+    }
   }
 
   render() {
@@ -126,6 +140,13 @@ const Action = ( props ) => {
 const Options = ( props ) => {
   return (
     <div>
+      {
+        ( props.options.length === 0 ) &&
+        <p>
+          Sorry, there are no options. Add some if you like!
+        </p>
+      }
+      
       <button onClick={ props.handleDeleteOptions }>Remove All</button>
       { props.options.map( ( solo, index ) => ( 
         <Option 
@@ -173,8 +194,10 @@ class AddOption extends React.Component {
     const error = this.props.handleAddOption( option );
 
     this.setState(() => ( { error } ) );
-
-    e.target.elements.option.value = '';
+    
+    if ( !error ) {
+      e.target.elements.option.value = '';
+    }
   }
 
   render() {
