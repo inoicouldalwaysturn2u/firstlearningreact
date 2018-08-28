@@ -14,6 +14,8 @@ class Counter extends React.Component {
     this.oldWay = this.oldWay.bind( this );
     this.currentWay = this.currentWay.bind( this );
 
+    this.componentDidMount = this.componentDidMount.bind( this );
+
     this.state = {
       count: 0
     };
@@ -66,6 +68,28 @@ class Counter extends React.Component {
     this.setState({
       count: this.state.count + 1
     });
+  }
+
+
+  componentDidMount() {
+    const count = this.commonInt( localStorage.getItem( 'count' ) );
+
+    if ( !isNaN( count ) ) {
+      this.setState( ( { count } ) );
+    }
+  }
+
+  componentDidUpdate( prevProp, prevState ) {
+    if ( prevState.count !== this.state.count ) {
+      // @Practice JS syntax and common tropes
+      // const currNum = JSON.stringify( this.state.count );
+      const currNum = this.state.count;
+      localStorage.setItem( 'count', currNum );
+    }
+  }
+
+  commonInt( convertToNum ) {
+    return parseInt( convertToNum, 10 );
   }
 
   render() {
