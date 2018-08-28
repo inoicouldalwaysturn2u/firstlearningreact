@@ -11,7 +11,7 @@ class Counter extends React.Component {
     this.handleMinusOne = this.handleMinusOne.bind( this );
     this.handleReset = this.handleReset.bind( this );
 
-    this.olWay = this.oldWay.bind( this );
+    this.oldWay = this.oldWay.bind( this );
     this.currentWay = this.currentWay.bind( this );
 
     this.state = {
@@ -20,7 +20,7 @@ class Counter extends React.Component {
   }
 
   handleAddOne() {
-    this.setState( ( prevState ) => {
+    this.setState( ( prevState ) => {      
       return {
         count: prevState.count + 1
       };
@@ -43,7 +43,7 @@ class Counter extends React.Component {
     });
   }
 
-
+  // Actually will do both commands
   currentWay() {
     this.setState( () => {
       return {
@@ -58,7 +58,7 @@ class Counter extends React.Component {
     });
   }
 
-  // async issues. Result is not 0 + 1, but instead count + 1.
+  // Async issues. Result is not 0 + 1, but instead count + 1.
   oldWay() {
     this.setState( {
       count: 0
@@ -80,7 +80,7 @@ class Counter extends React.Component {
         <button onClick={ this.handleMinusOne }>
           -1
         </button>
-        <button onClick={ this.currentWay }>
+        <button onClick={ this.handleReset }>
           reset
         </button>
       </div>
