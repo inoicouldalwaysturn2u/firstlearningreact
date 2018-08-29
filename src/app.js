@@ -1,7 +1,6 @@
-// import PropTypes from 'prop-types';
-/* global PropTypes */
-/* global React */
-/* global ReactDOM */
+import PropTypes from 'prop-types';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 class IndecisionApp extends React.Component {
   constructor( props ) {
