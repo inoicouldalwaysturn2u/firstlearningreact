@@ -1,3 +1,4 @@
+// import PropTypes from 'prop-types';
 /* global React */
 /* global ReactDOM */
 
@@ -73,7 +74,6 @@ class IndecisionApp extends React.Component {
     this.setState( ( prevState ) =>
       ( { options: prevState.options.concat( addition ) } )
     );
-
   }
 
   randomOption() {
@@ -124,6 +124,12 @@ const Header = ( props ) => {
 Header.defaultProps = {
   title: 'Indecision App'
 };
+// const { title } = React.PropTypes
+// Header.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   subtitle: PropTypes.string.isRequired,
+// };
+
 
 const Action = ( props ) => {
   return (
@@ -132,6 +138,12 @@ const Action = ( props ) => {
     </div>
   );
 };
+
+// Action.propTypes = {
+//   buttonState: PropTypes.bool.isRequired,
+//   handlePick: PropTypes.number.isRequired,
+// };
+
 
 const Options = ( props ) => {
   return (
@@ -156,12 +168,20 @@ const Options = ( props ) => {
   );
 };
 
+// Options.propTypes = {
+//   options: PropTypes.array.isRequired,
+// just does setState...
+//   handleDeleteOptions: PropTypes.func.isRequired,
+// };
+
+
 const Option = ( props ) => {
   return (
     <div>
       <p>
         { props.optionText }
       </p>
+      {/* @@Me Q: why is e there? */}
       <button onClick={ ( e ) => {
         props.handleDeleteOption( props.optionText );
       }}
@@ -171,6 +191,12 @@ const Option = ( props ) => {
     </div>
   );
 };
+
+// Option.propTypes = {
+// just does setState...
+//   handleDeleteOption: PropTypes.func.isRequired,
+// };
+
 
 class AddOption extends React.Component {
   constructor( props ) {
@@ -208,5 +234,11 @@ class AddOption extends React.Component {
     );
   }
 }
+
+// AddOption.propTypes = {
+//   optionText: PropTypes.string.isRequired,
+// handleAddOption returns either string or it goes on and just does setState...
+//   handleAddOption: PropTypes.string,
+// };
 
 ReactDOM.render( <IndecisionApp options={ [ 'Thing one', 'Thing two' ] } />, document.getElementById( 'app' ) );
