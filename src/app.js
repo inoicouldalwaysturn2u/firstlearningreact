@@ -1,4 +1,5 @@
 // import PropTypes from 'prop-types';
+/* global PropTypes */
 /* global React */
 /* global ReactDOM */
 
@@ -125,10 +126,10 @@ Header.defaultProps = {
   title: 'Indecision App'
 };
 // const { title } = React.PropTypes
-// Header.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   subtitle: PropTypes.string.isRequired,
-// };
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+};
 
 
 const Action = ( props ) => {
@@ -139,10 +140,10 @@ const Action = ( props ) => {
   );
 };
 
-// Action.propTypes = {
-//   buttonState: PropTypes.bool.isRequired,
-//   handlePick: PropTypes.number.isRequired,
-// };
+Action.propTypes = {
+  buttonState: PropTypes.bool.isRequired,
+  handlePick: PropTypes.function
+};
 
 
 const Options = ( props ) => {
@@ -168,11 +169,12 @@ const Options = ( props ) => {
   );
 };
 
-// Options.propTypes = {
-//   options: PropTypes.array.isRequired,
-// just does setState...
-//   handleDeleteOptions: PropTypes.func.isRequired,
-// };
+Options.propTypes = {
+  options: PropTypes.array.isRequired,
+  // just does setState...
+  handleDeleteOptions: PropTypes.func.isRequired,
+  handleDeleteOption: PropTypes.func.isRequired
+};
 
 
 const Option = ( props ) => {
@@ -192,10 +194,11 @@ const Option = ( props ) => {
   );
 };
 
-// Option.propTypes = {
-// just does setState...
-//   handleDeleteOption: PropTypes.func.isRequired,
-// };
+Option.propTypes = {
+  optionText: PropTypes.string,
+  // just does setState...
+  handleDeleteOption: PropTypes.func.isRequired,
+};
 
 
 class AddOption extends React.Component {
@@ -235,10 +238,11 @@ class AddOption extends React.Component {
   }
 }
 
-// AddOption.propTypes = {
-//   optionText: PropTypes.string.isRequired,
-// handleAddOption returns either string or it goes on and just does setState...
-//   handleAddOption: PropTypes.string,
-// };
+AddOption.propTypes = {
+  optionText: PropTypes.string,
+  // handleAddOption returns either string or it goes on and just does setState...
+  // handleAddOption: PropTypes.string,
+  handleAddOption: PropTypes.function,
+};
 
 ReactDOM.render( <IndecisionApp options={ [ 'Thing one', 'Thing two' ] } />, document.getElementById( 'app' ) );
