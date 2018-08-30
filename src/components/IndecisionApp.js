@@ -7,110 +7,116 @@ import Action from './Action';
 import Options from './Options';
 
 export default class IndecisionApp extends React.Component {
-  constructor(props) {
-    super(props);
+  ////
+  // variable
+  ////
+  state = {
+    options: []
+  };
 
-    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-    this.handleDeleteOption = this.handleDeleteOption.bind(this);
-
-    this.handleAddOption = this.handleAddOption.bind(this);
-    this.randomOption = this.randomOption.bind(this);
-    this.handlePick = this.handlePick.bind(this);
-
-    this.state = {
-      options: []
-    };
-  }
-
-  componentDidMount() {
-    try {
-      const json = localStorage.getItem('options');
-      const options = JSON.parse(json);
-
-      if (options) {
-        this.setState(() => ({ options }));
-      }
-    } catch (e) {
-      // do nothing
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.options.length !== this.state.options.length) {
-      const json = JSON.stringify(this.state.options);
-      localStorage.setItem('options', json);
-    }
-  }
-
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-  }
-
-
-  handleDeleteOptions() {
-    this.setState(() => {
+  ////
+  // Event handler methods
+  ////
+  handleDeleteOptions = () => {
+    this.setState( () => {
       return {
         options: []
       };
     });
 
-    this.setState(() =>
-      ({ options: [] })
+    this.setState( () =>
+      ( { options: [] } )
     );
   }
 
-  handleDeleteOption(option) {
-    this.setState((prevState) => ({
-      options: prevState.options.filter((solo) => {
+  handleDeleteOption = ( option ) => {
+    this.setState( ( prevState ) => ({
+      options: prevState.options.filter( ( solo ) => {
         return option !== solo;
       })
     })
     );
   }
 
-  handleAddOption(addition) {
-    if (!addition) {
+  handleAddOption = ( addition ) => {
+    if ( !addition ) {
       return 'Enter valid value to add item';
-    } else if (this.state.options.indexOf(addition) > -1) {
+    } else if ( this.state.options.indexOf( addition ) > -1 ) {
       return 'This option already exists';
     }
 
-    this.setState((prevState) =>
-      ({ options: prevState.options.concat(addition) })
+    this.setState( ( prevState ) =>
+      ( { options: prevState.options.concat( addition ) } )
     );
   }
 
-  randomOption() {
+  handlePick = () => {
+    alert( this.randomOption() );
+  }
+
+
+  ////
+  // Supporting methods
+  ////
+  randomOption = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
     return this.state.options[randomNum];
   }
 
-  handlePick() {
-    alert(this.randomOption());
-  }
-
-  buttonState() {
-    if (this.state.options) {
+  buttonState = () => {
+    if ( this.state.options ) {
       return this.state.options.length > 0 ? false : true;
     }
   }
 
+
+  //// 
+  // Component Magic Shiz
+  //// 
+  componentDidMount() {
+    try {
+      const json = localStorage.getItem( 'options' );
+      const options = JSON.parse( json );
+
+      if ( options ) {
+        this.setState( () => ( { options } ) );
+      }
+    } catch ( e ) {
+      // do nothing
+    }
+  }
+
+  componentDidUpdate( prevProps, prevState ) {
+    if (prevState.options.length !== this.state.options.length) {
+      const json = JSON.stringify(this.state.options );
+      localStorage.setItem('options', json);
+    }
+  }
+
+  componentWillUnmount() {
+    console.log( 'componentWillUnmount' );
+  }
+
+
+  ////
+  // Render!
+  ////
   render() {
     const subtitle = 'Put your life in the hands of a computer';
 
     return (
       <div>
-        <Header subtitle={subtitle} />
+        <Header subtitle={ subtitle } />
         <Action
-          buttonState={this.buttonState()}
-          handlePick={this.handlePick}
+          buttonState={ this.buttonState() }
+          handlePick={ this.handlePick }
         />
         <Options
-          options={this.state.options}
-          handleDeleteOptions={this.handleDeleteOptions}
-          handleDeleteOption={this.handleDeleteOption}
+          options={ this.state.options }
+          handleDeleteOptions={ this.handleDeleteOptions }
+          handleDeleteOption={ this.handleDeleteOption }
         />
-        <AddOption handleAddOption={this.handleAddOption} />
+        <AddOption handleAddOption={ this.handleAddOption } />
       </div>
     );
   }

@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Option = (props) => {
+const Option = ( props ) => {
   return (
     <div>
       <p>
-        {props.optionText}
+        {props.optionText}      
+       {/* @@Me Q: why is e there? */}
+        <button onClick={ ( e ) => {
+          props.handleDeleteOption( props.optionText );
+        }}
+        >
+          Remove
+        </button>
       </p>
-      {/* @@Me Q: why is e there? */}
-      <button onClick={(e) => {
-        props.handleDeleteOption(props.optionText);
-      }}
-      >
-        Remove
-      </button>
     </div>
   );
 };

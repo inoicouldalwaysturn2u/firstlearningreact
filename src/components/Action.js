@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Action = (props) => {
+const Action = ( props ) => {
   return (
     <div>
-      <button disabled={props.buttonState} onClick={props.handlePick}>What should I do?</button>
+      <button disabled={ props.buttonState } onClick={ props.handlePick }>What should I do?</button>
     </div>
   );
 };

@@ -3,22 +3,22 @@ import React from 'react';
 
 import Option from './Option';
 
-const Options = (props) => {
+const Options = ( props ) => {
   return (
     <div>
       {
-        (props.options.length === 0) &&
+        ( props.options.length === 0 ) &&
         <p>
           Sorry, there are no options. Add some if you like!
         </p>
       }
 
-      <button onClick={props.handleDeleteOptions}>Remove All</button>
-      {props.options.map((solo, index) => (
+      <button onClick={ props.handleDeleteOptions }>Remove All</button>
+      {props.options.map( ( solo, index ) => (
         <Option
-          key={index}
-          optionText={solo}
-          handleDeleteOption={props.handleDeleteOption}
+          key={ index }
+          optionText={ solo }
+          handleDeleteOption={ props.handleDeleteOption }
         />
       ))
       }
