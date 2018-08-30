@@ -6,12 +6,22 @@ import Header from './Header';
 import Action from './Action';
 import Options from './Options';
 
+import OptionModal from './OptionModal';
+
 export default class IndecisionApp extends React.Component {
+  constructor( props ) {
+    super( props );
+    // this.state = {
+    //   options: [],
+    //   selectedOption: undefined
+    // };
+  }
   ////
   // variable
   ////
   state = {
-    options: []
+    options: [],
+    selectedOption: undefined
   };
 
   ////
@@ -51,7 +61,11 @@ export default class IndecisionApp extends React.Component {
   }
 
   handlePick = () => {
-    alert( this.randomOption() );
+    this.setState( () => ( { selectedOption: this.randomOption() } ) );
+  }
+
+  flipSelectedOption = () => {
+    this.setState( () => ( { selectedOption: undefined } ) );
   }
 
 
@@ -59,8 +73,8 @@ export default class IndecisionApp extends React.Component {
   // Supporting methods
   ////
   randomOption = () => {
-    const randomNum = Math.floor(Math.random() * this.state.options.length);
-    return this.state.options[randomNum];
+    const randomNum = Math.floor( Math.random() * this.state.options.length );
+    return this.state.options[ randomNum] ;
   }
 
   buttonState = () => {
@@ -69,6 +83,9 @@ export default class IndecisionApp extends React.Component {
     }
   }
 
+  commonInt( convertToNum ) {
+    return parseInt( convertToNum, 10 );
+  }
 
   //// 
   // Component Magic Shiz
@@ -117,8 +134,12 @@ export default class IndecisionApp extends React.Component {
           handleDeleteOption={ this.handleDeleteOption }
         />
         <AddOption handleAddOption={ this.handleAddOption } />
+
+        <OptionModal 
+          selectedOption={ this.state.selectedOption }
+          flipSelectedOption={ this.flipSelectedOption }
+        />
       </div>
     );
   }
 }
-
