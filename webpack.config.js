@@ -15,6 +15,7 @@ module.exports = {
   },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
-    contentBase: path.join( __dirname, 'public/assets' )
+    contentBase: path.join( __dirname, 'public' ),
+    publicPath: path.join( __dirname, 'public' )
   }
 };
