@@ -21,7 +21,7 @@ export default class IndecisionApp extends React.Component {
   ////
   state = {
     options: [],
-    selectedOption: undefined
+    selectedOption: ''
   };
 
   ////
@@ -65,7 +65,7 @@ export default class IndecisionApp extends React.Component {
   }
 
   flipSelectedOption = () => {
-    this.setState( () => ( { selectedOption: undefined } ) );
+    this.setState( () => ( { selectedOption: '' } ) );
   }
 
 
