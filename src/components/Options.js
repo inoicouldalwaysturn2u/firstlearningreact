@@ -5,24 +5,31 @@ import Option from './Option';
 
 const Options = ( props ) => (
   <div>
-    {
-      ( props.options.length === 0 ) &&
-      <p>
-        Sorry, there are no options. Add some if you like!
-      </p>
-    }
+    <div className="widget-header">
+      <h3 className="widget-header__title">Your Options</h3>
+      <button
+        className="button button--link"
+        onClick={ props.handleDeleteOptions }
+      >
+        Remove All
+      </button>
+    </div>
 
-    <button onClick={ props.handleDeleteOptions }>Remove All</button>
-    {props.options.map( ( solo, index ) => (
-      <Option
-        key={ index }
-        optionText={ solo }
-        handleDeleteOption={ props.handleDeleteOption }
-      />
-    ))
+    { props.options.length === 0 &&
+     <p className="widget__message">Please add an option to get started!</p> }
+
+    {
+      props.options.map( ( option, index ) => (
+        <Option
+          key={ option }
+          optionText={ option }
+          count={ index + 1 }
+          handleDeleteOption={ props.handleDeleteOption }
+        />
+      ))
     }
   </div>
-  );
+);
 
 Options.propTypes = {
   options: PropTypes.array.isRequired,

@@ -10,24 +10,28 @@ const OptionModal = ( props ) => (
     isOpen={ !!props.selectedOption }
     onRequestClose={ props.flipSelectedOption }
     contentLabel={ title }
+    closeTimeoutMS={ 200 }
+    className="modal"
   >
 
-    <h2>
-      { title }
-    </h2>
+    <h3 
+      className="modal__title">
+      Selected Option
+    </h3>
 
-    { props.selectedOption && <p>{ props.selectedOption }</p> }
+    { props.selectedOption &&
+     <p className="modal__body">{ props.selectedOption }</p> }
 
     <button
-      onClick={ props.flipSelectedOption }
-    >
-      Close
-    </button>
+      className="button"
+      onClick={props.flipSelectedOption }>Okay</button>
+
   </Modal>
 );
 
 OptionModal.propTypes = {
-  selectedOption: PropTypes.string
+  selectedOption: PropTypes.string,
+  flipSelectedOption: PropTypes.boolean
 };
 
 export default OptionModal;

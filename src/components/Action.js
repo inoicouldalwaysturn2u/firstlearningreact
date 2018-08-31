@@ -3,7 +3,13 @@ import React from 'react';
 
 const Action = ( props ) => (
   <div>
-    <button disabled={ props.buttonState } onClick={ props.handlePick }>What should I do?</button>
+    <button 
+      className="big-button"
+      disabled={ props.buttonState } 
+      onClick={ props.handlePick }
+    >
+      What should I do?
+    </button>
   </div>
 );
 
